@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main_div">
+      <div class="music_container">
+        <div class="player">
+          <div class="top-section">
+            <p>Now Playing</p>
+            <i class="fas fa-sun" id="theme"></i>
+          </div>
+          <div class="img_container">
+            <img src="asset/images/1.jpg" alt="" />
+          </div>
+          <audio src="asset/music/1.mp3"></audio>
+          <h2 id="title">Above Your Hand</h2>
+          <h3 id="artist">Annabel</h3>
+          <div class="progressbar" id="progressbar">
+            <div class="progressbar_meter">
+              <div id="current_time">0:00</div>
+              <div id="duration">5:04</div>
+            </div>
+
+            <div
+              class="progressbar_div progressbar_color_light"
+              id="progressbar_div"
+            >
+              <div class="progress" id="progress"></div>
+            </div>
+          </div>
+
+          <div class="music_controls">
+            <i class="fas fa-backward" id="prev"></i>
+            <i class="fas fa-play" id="play"></i>
+            <i class="fas fa-forward" id="next"></i>
+          </div>
+        </div>
+
+        <div class="playlist">
+          <p>heloooooo</p>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
