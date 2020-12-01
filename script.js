@@ -53,6 +53,16 @@ const songs = [
     title: "Gurenge",
     artist: "Lisa",
   },
+  {
+    name: "4",
+    title: "Strawberries & Cigarettes",
+    artist: " Troye Sivan",
+  },
+  {
+    name: "5",
+    title: "Halsey - Bad At Love",
+    artist: "Halsey",
+  },
 ];
 
 const loadSong = (songs) => {
@@ -79,7 +89,6 @@ const prevSong = () => {
 
 audio.addEventListener("timeupdate", (event) => {
   const {currentTime, duration} = event.target;
-  console.log(duration);
   // song progress bar
   let progress_time = (currentTime / duration) * 100;
   progress.style.width = `${progress_time}%`;
@@ -93,7 +102,6 @@ audio.addEventListener("timeupdate", (event) => {
   let _duration = `${tot_minute}:${tot_sec}`;
 
   if (duration) {
-    console.log(_duration);
     tot_duration.textContent = `${_duration}`;
   }
 
@@ -124,6 +132,8 @@ theme.addEventListener("click", () => {
     root.style.setProperty("--play-icon", "rgb(51, 51, 51)");
     root.style.setProperty("--progress-shadow", "rgba(255, 255, 255, 0.2)");
     root.style.setProperty("--playlist-shadow", "rgba(255, 255, 255, 0.9)");
+    root.style.setProperty("--border", "rgba(206, 206, 206, 0.1)");
+
     theme.classList.replace("fa-sun", "fa-moon");
     theme.classList.replace("fa-sun", "fa-moon");
     progressbar_div.classList.replace(
@@ -137,6 +147,7 @@ theme.addEventListener("click", () => {
     root.style.setProperty("--play-icon", "rgb(255, 255, 255)");
     root.style.setProperty("--progress-shadow", "rgba(255, 255, 255, 0.2)");
     root.style.setProperty("--playlist-shadow", "rgba(0, 0, 0, 0.9)");
+    root.style.setProperty("--border", "rgba(206, 206, 206, 0.9)");
 
     theme.classList.replace("fa-moon", "fa-sun");
     progressbar_div.classList.replace(
@@ -181,9 +192,3 @@ function GetIndex(sender) {
     }
   }
 }
-
-playlist.addEventListener("click", () => {
-  let musicdata = GetIndex(this);
-  console.log(musicdata);
-  // loadSong(songs[index]);
-});
