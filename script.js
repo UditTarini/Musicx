@@ -112,8 +112,10 @@ theme.addEventListener("click", () => {
   if (dark) {
     root.style.setProperty("--background", "#2b2b2b");
     root.style.setProperty("--font", "#fff");
-    root.style.setProperty("--theme-icon", "#363636");
+    root.style.setProperty("--theme-icon", "rgba(255, 255, 255, 0.27)");
+    root.style.setProperty("--play-icon", "rgb(51, 51, 51)");
     root.style.setProperty("--progress-shadow", "rgba(255, 255, 255, 0.2)");
+    root.style.setProperty("--playlist-shadow", "rgba(255, 255, 255, 0.9)");
     theme.classList.replace("fa-sun", "fa-moon");
     theme.classList.replace("fa-sun", "fa-moon");
     progressbar_div.classList.replace(
@@ -123,8 +125,10 @@ theme.addEventListener("click", () => {
   } else {
     root.style.setProperty("--background", "#fff");
     root.style.setProperty("--font", "#000");
-    root.style.setProperty("--theme-icon", "#fff");
+    root.style.setProperty("--theme-icon", "rgba(0, 0, 0, 0.27)");
     root.style.setProperty("--progress-shadow", "rgba(255, 255, 255, 0.2)");
+    root.style.setProperty("--playlist-shadow", "rgba(0, 0, 0, 0.9)");
+
     theme.classList.replace("fa-moon", "fa-sun");
     progressbar_div.classList.replace(
       "progressbar_color_dark",
