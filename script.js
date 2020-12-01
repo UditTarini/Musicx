@@ -5,9 +5,11 @@ const artist = document.getElementById("artist");
 const title = document.getElementById("title");
 const prev = document.getElementById("prev");
 const next = document.getElementById("next");
+const playlist = document.getElementById("playlist");
 
 let progress = document.getElementById("progress");
 let tot_duration = document.getElementById("duration");
+let playlist_duration = document.getElementById("playlist_duration");
 let current_time = document.getElementById("current_time");
 let progressbar_div = document.getElementById("progressbar_div");
 
@@ -58,6 +60,7 @@ const loadSong = (songs) => {
   artist.textContent = songs.artist;
   audio.src = "asset/music/" + songs.name + ".mp3";
   image.src = "asset/images/" + songs.name + ".jpg";
+  playMusic();
 };
 
 var songIndex = 0;
@@ -76,9 +79,12 @@ const prevSong = () => {
 
 audio.addEventListener("timeupdate", (event) => {
   const {currentTime, duration} = event.target;
+  console.log(duration);
+  // song progress bar
   let progress_time = (currentTime / duration) * 100;
   progress.style.width = `${progress_time}%`;
 
+  //convert time
   let tot_minute = Math.floor(duration / 60);
   let tot_sec = Math.floor(duration % 60);
   if (tot_sec < 10) {
@@ -87,6 +93,7 @@ audio.addEventListener("timeupdate", (event) => {
   let _duration = `${tot_minute}:${tot_sec}`;
 
   if (duration) {
+    console.log(_duration);
     tot_duration.textContent = `${_duration}`;
   }
 
@@ -107,6 +114,7 @@ progressbar_div.addEventListener("click", (event) => {
   audio.currentTime = move_progress;
 });
 
+// to change theme
 theme.addEventListener("click", () => {
   dark = !dark;
   if (dark) {
@@ -126,6 +134,7 @@ theme.addEventListener("click", () => {
     root.style.setProperty("--background", "#fff");
     root.style.setProperty("--font", "#000");
     root.style.setProperty("--theme-icon", "rgba(0, 0, 0, 0.27)");
+    root.style.setProperty("--play-icon", "rgb(255, 255, 255)");
     root.style.setProperty("--progress-shadow", "rgba(255, 255, 255, 0.2)");
     root.style.setProperty("--playlist-shadow", "rgba(0, 0, 0, 0.9)");
 
@@ -140,3 +149,41 @@ theme.addEventListener("click", () => {
 audio.addEventListener("ended", nextSong);
 next.addEventListener("click", nextSong);
 prev.addEventListener("click", prevSong);
+
+const playlistItem = (name, title, artist) => {
+  return `<li class="playlist" onclick="loadSong(songs[${name - 1}])">
+    <div class="music">
+      <img src="asset/images/${name}.jpg" alt="" class="playlist_img" />
+      <div class="music_info">
+        <p id="playlist_title">${title}</p>
+        <p id="playlist_artist" >${artist}</p>
+      </div>
+    </div>
+    <audio src="asset/music/${name}.mp3"></audio>
+    <p id="duration">5:04</p>
+  </li>`;
+};
+
+songs.forEach((item) => {
+  playlist.innerHTML += playlistItem(item.name, item.title, item.artist);
+});
+
+function GetIndex(sender) {
+  var aElements = sender.parentNode.parentNode.getElementsByTagName("a");
+  var aElementsLength = aElements.length;
+
+  var index;
+  for (var i = 0; i < aElementsLength; i++) {
+    if (aElements[i] == sender) {
+      //this condition is never true
+      index = i;
+      return index;
+    }
+  }
+}
+
+playlist.addEventListener("click", () => {
+  let musicdata = GetIndex(this);
+  console.log(musicdata);
+  // loadSong(songs[index]);
+});
