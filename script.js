@@ -192,3 +192,13 @@ function GetIndex(sender) {
     }
   }
 }
+
+if ("serviceWorker" in navigator) {
+  // register service worker
+  navigator.serviceWorker
+    .register("service-worker.js")
+    .then((registration) => {
+      console.log("SW Registered");
+    })
+    .catch((error) => console.log("SW Registration failed", error));
+}

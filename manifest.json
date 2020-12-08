@@ -1,0 +1,16 @@
+{
+    "name": "Muiscx",
+    "short_name": "Musicx",
+    "start_url": ".",
+    "scope": "./",
+    "icons": [
+      {
+        "src": "asset/images/logo.png",
+        "sizes": "640x640",
+        "type": "image/png"
+      }
+    ],
+    "theme_color": "#fff",
+    "background_color": "#fff",
+    "display": "standalone"
+  }
